@@ -57,8 +57,8 @@ router.post("/", async (req, res) => {
   const privateKey = new PrivateKey()
   const privkey = privateKey.toWIF()
   const address = privateKey.toAddress().toString()
-  console.log(privkey, "privatekey")
-  console.log( address, "address")
+  //console.log(privkey, "privatekey")
+  //console.log( address, "address")
   newDocument.date = new Date();
   let newDocument1 = {multipv: privkey, multiwallet: address}
   //newDocument.multipv = privkey;
