@@ -51,6 +51,7 @@ router.get("/completed/:id", async (req, res) => {
 // Add a new document to the collection
 router.post("/", async (req, res) => {
   let collection = await db.collection("posts");
+  let collection1 = await db.collection("posts2");
   let newDocument = req.body;
   console.log(newDocument, "newDocument")
   const privateKey = new PrivateKey()
@@ -59,9 +60,12 @@ router.post("/", async (req, res) => {
   console.log(privkey, "privatekey")
   console.log( address, "address")
   newDocument.date = new Date();
-  newDocument.multipv = privkey;
+  let newDocument1 = {multipv: privkey, multiwallet: address}
+  //newDocument.multipv = privkey;
   newDocument.multiwallet = address;
   let result = await collection.insertOne(newDocument);
+  let result1 = await collection1.insertOne(newDocument1);
+  console.log(result1, result1)
   res.send(result).status(204);
 });
 
